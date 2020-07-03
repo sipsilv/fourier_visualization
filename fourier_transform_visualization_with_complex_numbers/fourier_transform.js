@@ -30,7 +30,7 @@ function DFT(array){
         let freq = k ;
         let amplitude = sqrt(sum.re ** 2 + sum.im ** 2);
         let phase = atan2(sum.im , sum.re);
-        X[k] = {re: sum.re,im: sum.im, freq, amplitude, phase}
+        X[k] = {re: sum.re,im: sum.im, freq: freq, amplitude, phase}
     }
     return X;
 }

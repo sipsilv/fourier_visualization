@@ -1,3 +1,5 @@
+
+
 //Santhosh Jallu
 const USER = 0;
 const FOURIER = 1;
@@ -14,7 +16,7 @@ let state = -1;
 function mousePressed(){
   console.log("pressed")
   state = USER;
-  drawing = [];
+  drawing =[];
   x = [];
   time = 0;
   path = [];
@@ -64,6 +66,7 @@ function epiCycles(x, y, rotation, fourier){
 
 function draw() {
   background(0);
+  
 
   if(state == USER){
     let point = createVector(mouseX - width/2, mouseY- height / 2);
@@ -72,12 +75,18 @@ function draw() {
     noFill();
     beginShape();
     for(let v of drawing){
-      //console.log(v.x)
       vertex(v.x+ width / 2, v.y+ height / 2);
     }
     endShape();
 
    } else if(state == FOURIER){
+    stroke(255);
+    noFill();
+    beginShape();
+    for(let v of drawing){
+      vertex(v.x+ width / 2, v.y+ height / 2);
+    }
+    endShape();
 
   
   let v = epiCycles(width / 2, height / 2,0, fourierX);
@@ -87,13 +96,14 @@ function draw() {
   
   beginShape();
   noFill();
-  stroke(255);
+  
+  stroke('#03fca5');
   for(let i = 0; i< path.length; i++){
     vertex(path[i].x,path[i].y);
   }
   endShape(); 
 
-  const dt = TWO_PI / fourierX.length;
+  const dt = (TWO_PI / fourierX.length);
 
   time += dt;
 
